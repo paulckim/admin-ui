@@ -1,0 +1,23 @@
+{
+  "name": "sessions-manager-service",
+  "description": "Public Endpoint for rerouting to login and managing user sessions.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Paul Cheor Kim"
+  },
+  "scripts": {
+    "postinstall": "link-module-alias",
+    "pretest": "link-module-alias"
+  },
+  "_moduleAliases": {
+    "*root": "."
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "statuses": "^1.5.0"
+  },
+  "devDependencies": {
+    "link-module-alias": "^1.2.0",
+    "mocha": "^6.2.2"
+  }
+}

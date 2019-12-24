@@ -1,0 +1,9 @@
+{
+  "name": "login-cdn",
+  "description": "Public Endpoint for rerouting to login and managing user sessions.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Paul Cheor Kim"
+  },
+  "dependencies": {}
+}
