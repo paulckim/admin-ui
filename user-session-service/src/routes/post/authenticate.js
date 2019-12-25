@@ -3,6 +3,8 @@
 const {Router} = require('express');
 const router = Router();
 const statuses = require('statuses');
+const uuid = require('uuid/v4');
+const cookie = require('cookie');
 
 const VALID_USERNAME = 'admin';
 const VALID_PASSWORD = 'password';
@@ -22,8 +24,16 @@ const authenticateRoute = router.post('/authenticate', (req, res) => {
     });
     try {
       const resBody = JSON.parse(reqStr);
-      const statusCode = isAuthenticated(resBody) 
-        ? statuses('ok') : statuses('forbidden');
+      const isAuthenicated = isAuthenticated(resBody);
+      const statusCode = isAuthenicated ? statuses('ok') : statuses('forbidden');
+      if(isAuthenicated) {
+        const sessionId = uuid();
+        console.log(`Session-Id=${sessionId}`);
+        res.setHeader('Set-Cookie', cookie.serialize('Session-Id', sessionId, {
+          httpOnly: true,
+          maxAge: 60 * 60 * 24 // 1 day
+        }));
+      }
       res.status(statusCode).end();
     } catch(err) {
       res.status(statuses('bad request')).end();

@@ -17,15 +17,15 @@
 
 const express = require('express');
 const app = express();
-const {authenticateRoute} = require('./routes/post/authenticate');
-app.use('/', authenticateRoute);
+const {redirectPostRoute} = require('./routes/post/redirect');
+app.use('/', redirectPostRoute);
 const port = 8080;
 
 const server = app.listen(port, () => {
-  console.log(`Started Session Manager Service on port=${port}`);
+  console.log(`Started Proxy Access Service on port=${port}`);
 });
 
 server.on('error', err => {
-  console.error('Unexpected termination of Session Manager Service', err);
+  console.error('Unexpected termination of Proxy Access Service', err);
   process.exit(-1);
 });

@@ -1,6 +1,6 @@
 {
-  "name": "sessions-manager-service",
-  "description": "Public Endpoint for rerouting to login and managing user sessions.",
+  "name": "proxy-access-service",
+  "description": "Scaleable proxy service that manages api access control and static resource redirection.",
   "version": "1.0.0",
   "author": {
     "name": "Paul Cheor Kim"
